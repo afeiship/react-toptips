@@ -1,16 +1,16 @@
 import './dev.scss';
-import {Toptips,ToptipsCtrl} from './main';
+import {ReactToptips,ReactToptipsCtrl} from './main';
 
 
 class App extends React.Component{
   componentDidMount(){
-    ToptipsCtrl.createInstance({
+    ReactToptipsCtrl.createInstance({
       size:'14px'
     });
   }
 
   _show(status){
-    ToptipsCtrl.show({
+    ReactToptipsCtrl.show({
       theme:status,
       content:'Cool!,I am a very long text!!!'
     })

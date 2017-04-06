@@ -1,12 +1,15 @@
 import './style.scss';
 import classNames from 'classnames';
+import noop from 'noop';
 import appendToDocument from 'react-append-to-document';
+import {PropTypes,PureComponent} from 'react';
 
-class TopTips extends React.Component{
+export default class ReactTopTips extends PureComponent{
   static propTypes = {
-    cssClass:React.PropTypes.string,
-    theme:React.PropTypes.string,
-    size:React.PropTypes.string
+    className:PropTypes.string,
+    theme:PropTypes.string,
+    size:PropTypes.string,
+    onClick:PropTypes.func
   };
 
   static defaultProps = {
@@ -16,7 +19,7 @@ class TopTips extends React.Component{
   };
 
   static newInstance(inProps){
-    return appendToDocument(TopTips,inProps,{
+    return appendToDocument(ReactTopTips,inProps,{
       className:'toptips-wrapper'
     });
   }
@@ -24,17 +27,14 @@ class TopTips extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      theme:this.props.theme,
-      visible:props.visible,
-      content:'',
-      size:props.size
+      ...props,
+      content:''
     };
   }
 
   show(inOptions){
     this.setState({
-      theme:inOptions.theme,
-      content:inOptions.content,
+      ...inOptions,
       visible:true
     });
   }
@@ -45,23 +45,22 @@ class TopTips extends React.Component{
     });
   }
 
-  _onClick(){
+  _onClick = (inEvent) =>{
     this.hide();
   }
 
   render(){
+    const {visible,theme,size,className,content} = this.state;
     return (
-      <div data-visible={this.state.visible}
-        data-theme={this.state.theme}
-        onClick={this._onClick.bind(this)}
+      <div data-visible={visible}
+        data-theme={theme}
+        onClick={this._onClick}
         style={{
-          fontSize:this.state.size
+          fontSize:size
         }}
-        className={classNames('react-toptips',this.props.cssClass)}
-        dangerouslySetInnerHTML={{__html: this.state.content}}>
+        className={classNames('react-toptips',className)}
+        dangerouslySetInnerHTML={{__html: content}}>
       </div>
     );
   }
 }
-
-export default TopTips;

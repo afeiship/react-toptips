@@ -1,7 +1,7 @@
-import Toptips from 'components/react-toptips';
-import ToptipsCtrl from 'components/react-toptips-ctrl';
+import ReactToptips from 'components/react-toptips';
+import ReactToptipsCtrl from 'components/react-toptips-ctrl';
 
 module.exports = {
-  Toptips,
-  ToptipsCtrl
+  ReactToptips,
+  ReactToptipsCtrl
 };
