@@ -7,6 +7,9 @@
 + https://github.com/steven5538/vue-button
 + https://yarnpkg.com/en/docs/install
 
+## size:
++ react-toptips.js  `8.33 kB`
++ react-toptips.js.map  `51.4 kB`
 
 ## properties:
 ```javascript
