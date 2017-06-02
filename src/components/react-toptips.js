@@ -1,8 +1,10 @@
 import './style.scss';
+
+import PropTypes from 'prop-types';
+import {PureComponent} from 'react';
+import appendToDocument from 'react-append-to-document';
 import classNames from 'classnames';
 import noop from 'noop';
-import appendToDocument from 'react-append-to-document';
-import {PropTypes,PureComponent} from 'react';
 
 export default class ReactTopTips extends PureComponent{
   static propTypes = {
